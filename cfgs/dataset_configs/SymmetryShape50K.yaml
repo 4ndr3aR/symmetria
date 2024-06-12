@@ -1,0 +1,3 @@
+NAME: SymmetryShape
+DATA_PATH: /home/isipiran/Software/PointGPT/data/dataset50K
+N_POINTS: 1024 # 10000

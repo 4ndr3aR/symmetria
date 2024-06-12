@@ -1,0 +1,3 @@
+# ninja log v5
+0	25981	1715280840425310990	/home/isipiran/Software/PointGPT/extensions/emd/build/temp.linux-x86_64-cpython-39/cuda/emd.o	9e3e67dc10bfa3d4
+11	21359	1715281193922428974	/home/isipiran/Software/PointGPT/extensions/emd/build/temp.linux-x86_64-cpython-39/cuda/emd_kernel.o	78a51c6efd491cb9
