@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from tools import pretrain_run_net as pretrain
 from tools import finetune_run_net as finetune
 from tools import run_linear_probing_modelnet40 as test_linear_modelnet40
