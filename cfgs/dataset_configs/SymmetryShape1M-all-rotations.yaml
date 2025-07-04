@@ -1,0 +1,3 @@
+NAME: SymmetryShape
+DATA_PATH: /home/test/SymSSL-1M-all-rotations
+N_POINTS: 1024 # 10000

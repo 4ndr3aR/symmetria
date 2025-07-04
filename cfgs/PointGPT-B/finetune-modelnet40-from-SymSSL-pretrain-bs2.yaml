@@ -1,0 +1,48 @@
+optimizer: { type: AdamW, kwargs: { lr: 0.0001, weight_decay: 0.01 } }
+
+scheduler: { type: CosLR, kwargs: { epochs: 50, initial_epochs: 10 } }
+
+dataset:
+  {
+    train:
+      {
+        _base_: cfgs/dataset_configs/ModelNet40.yaml,
+        others: { subset: "train" },
+      },
+    val:
+      {
+        _base_: cfgs/dataset_configs/ModelNet40.yaml,
+        others: { subset: "test" },
+      },
+    test:
+      {
+        _base_: cfgs/dataset_configs/ModelNet40.yaml,
+        others: { subset: "test" },
+      },
+  }
+# experiments/pretrain-SymSSL-300k-bs16/PointGPT-B/SymSSL-PointGPT-B-pretrain-300k-bs16/ckpt-last-PointGPT-B-300k-bs16-epoch36-loss38.pth
+# experiments/pretrain-SymSSL-1M-bs16/PointGPT-B/SymSSL-PointGPT-B-pretrain-1M-bs16/ckpt-last-PointGPT-B-1M-bs16-epoch10-loss39.pth
+# experiments/finetune-modelnet40-from-SymSSL-pretrain-bs16/PointGPT-B/finetune-modelnet40-from-SymSSL-PointGPT-B-pretrain-300k-bs16/ckpt-best-epoch-37-val_acc-91.9368-losses-0.2587-0.1355-train_acc-92.2663.pth
+# experiments/finetune-modelnet40-from-SymSSL-pretrain-bs16/PointGPT-B/finetune-modelnet40-from-SymSSL-PointGPT-B-pretrain-1M-bs16/ckpt-best-epoch-43-val_acc-92.4635-losses-0.1726-0.1288-train_acc-94.6545.pth
+model:
+  {
+    NAME: PointTransformer,
+    trans_dim: 768,
+    depth: 12,
+    drop_path_rate: 0.0,
+    cls_dim: 40,
+    num_heads: 12,
+    group_size: 32,
+    num_group: 64,
+    encoder_dims: 768,
+    decoder_depth: 4,
+    loss: cdl2,
+    weight_center: 1,
+  }
+
+npoints: 1024
+# min bs can only be 2 because BatchNorm layers
+total_bs: 2
+step_per_update: 1
+max_epoch: 50
+grad_norm_clip: 10
